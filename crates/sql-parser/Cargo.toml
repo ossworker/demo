@@ -1,0 +1,9 @@
+[package]
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+name = "sql-parser"
+version.workspace = true
+
+[dependencies]
+sqlparser = {version = "0.51", features = ["serde", "visitor"]}

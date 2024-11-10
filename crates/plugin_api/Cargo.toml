@@ -1,0 +1,27 @@
+[package]
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+name = "plugin_api"
+version.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+# [package.metadata.component]
+# package = "workoss:new-world"
+
+# [package.metadata.component.dependencies]
+
+[dependencies]
+# wit-bindgen-rt = {version = "0.34", features = ["bitflags"]}
+wit-bindgen = {version = "0.34", features = ["realloc", "macros"]}
+
+[build-dependencies]
+wit-deps = "0.4"
+
+[package.metadata.component]
+target = {path = "wit"}
+
+# [package.metadata.component.target.dependencies]
+# "wasi:cli" = {path = "../wit/deps/cli"}

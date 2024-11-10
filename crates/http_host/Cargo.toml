@@ -1,0 +1,13 @@
+[package]
+name = "http_host"
+edition = "2021"
+authors.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+tokio = { version = "1.41.1", features = ["full"] }
+wasmtime = {version = "26.0.1"}
+wasmtime-wasi = "26.0.1"
+wasmtime-wasi-http = "26.0.1"

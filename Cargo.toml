@@ -1,0 +1,31 @@
+[workspace]
+members = [
+  "crates/demo-cli",
+  "crates/wasi-demo-app",
+  "crates/sql-parser",
+  "crates/proc",
+  "crates/string-concat",
+  "crates/plugin_api",
+  "crates/custom_plugin",
+  "crates/plugin_host",
+  "crates/http_guest",
+  "crates/http_host",
+]
+resolver = "2"
+
+[workspace.package]
+authors = ["Workoss<workoss@icloud.com>"]
+edition = "2021"
+license = "Apache-2.0"
+version = "0.0.1"
+
+[workspace.dependencies]
+anyhow = {version = "1.0"}
+
+[profile.release]
+codegen-units = 1 
+lto = true #Link time opt链接过程优化，size减少大概50%
+opt-level = 'z' 
+overflow-checks = true #运行期 溢出类型检查
+panic = "abort" 
+strip = "debuginfo" #  -C strip flag 去除不必要的标头和调试信息，size减少大概30%

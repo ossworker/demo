@@ -1,0 +1,11 @@
+[package]
+authors.workspace = true
+edition = "2021"
+license.workspace = true
+name = "plugin_host"
+version.workspace = true
+
+[dependencies]
+tokio = { version = "1.41.1", features = ["full"] }
+wasmtime = {version = "26.0.1", features = ["component-model", "cranelift", "std", "runtime"]}
+wasmtime-wasi = "26.0.1"

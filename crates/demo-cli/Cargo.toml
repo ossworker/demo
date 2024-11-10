@@ -1,0 +1,21 @@
+[package]
+authors.workspace = true
+build = "build.rs"
+description = "A simple to use demo-cli"
+edition.workspace = true
+license.workspace = true
+name = "demo-cli"
+version.workspace = true
+
+[[bin]]
+name = "demo"
+path = "src/main.rs"
+
+[features]
+default = []
+
+[dependencies]
+clap = {version = "4", features = ["derive", "wrap_help"]}
+
+[build-dependencies]
+anyhow = {workspace = true}

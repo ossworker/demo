@@ -1,0 +1,7 @@
+package workoss:new-world;
+
+
+world new-world {
+  //include wasi:http/imports@0.2.2;
+  export greeting: func(name: string) -> string;
+}
