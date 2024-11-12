@@ -13,11 +13,14 @@ members = [
 ]
 resolver = "2"
 
+
 [workspace.package]
-authors = ["Workoss<workoss@icloud.com>"]
+authors = ["Workoss <workoss@icloud.com>"]
 edition = "2021"
 license = "Apache-2.0"
 version = "0.0.1"
+categories = ["wasm"]
+repository = "https://6f73jclm-3000.asse.devtunnels.ms/workoss/demo"
 
 [workspace.dependencies]
 anyhow = {version = "1.0"}

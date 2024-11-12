@@ -1,10 +1,12 @@
 [package]
 authors.workspace = true
 build = "build.rs"
+categories.workspace = true
 description = "A simple to use demo-cli"
 edition.workspace = true
 license.workspace = true
 name = "demo-cli"
+repository.workspace = true
 version.workspace = true
 
 [[bin]]
