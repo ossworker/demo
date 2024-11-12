@@ -1,3 +1,3 @@
 # demo
 
-wasi demo
+wasi 、clap
