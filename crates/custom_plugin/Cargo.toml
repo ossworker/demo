@@ -14,4 +14,5 @@ package = "workoss:new-world"
 [package.metadata.component.dependencies]
 
 [dependencies]
-plugin_api = {path = "../plugin_api"}
+plugin_api = { path = "../plugin_api" }
+ureq = { version = "3.0.0-rc2" }

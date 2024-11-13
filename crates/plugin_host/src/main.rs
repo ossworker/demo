@@ -1,4 +1,4 @@
-use std::env;
+use std::{env, path::Path};
 
 use wasmtime::{
     component::{bindgen, Component, Linker, ResourceTable},
@@ -46,12 +46,13 @@ async fn main() -> Result<()> {
         },
     );
 
-    let current_dir = env::current_dir()?;
+    let current_dir = env!("CARGO_MANIFEST_DIR");
+    println!("--{:#?}", current_dir);
 
     let component = Component::from_file(
         &engine,
-        current_dir
-            .join("./target/wasm32-wasip1/release/custom_plugin.wasm")
+        Path::new(current_dir)
+            .join("../../target/wasm32-wasip1/release/custom_plugin.wasm")
             .as_path(),
     )?;
     // let component = Component::from_file(&engine, "../wasm32-wasip1/release/custom_plugin.wasm")?;

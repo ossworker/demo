@@ -1,3 +1,3 @@
 # demo
 
-wasi 、clap
+wasi 、clap、http、plugin
