@@ -52,7 +52,7 @@ async fn main() -> Result<()> {
     let component = Component::from_file(
         &engine,
         Path::new(current_dir)
-            .join("../../target/wasm32-wasip1/release/custom_plugin.wasm")
+            .join("../../target/wasm32-wasip2/release/custom_plugin.wasm")
             .as_path(),
     )?;
     // let component = Component::from_file(&engine, "../wasm32-wasip1/release/custom_plugin.wasm")?;

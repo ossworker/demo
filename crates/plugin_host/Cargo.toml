@@ -6,6 +6,11 @@ name = "plugin_host"
 version.workspace = true
 
 [dependencies]
-tokio = { version = "1.41.1", features = ["full"] }
-wasmtime = {version = "26.0.1", features = ["component-model", "cranelift", "std", "runtime"]}
-wasmtime-wasi = "26.0.1"
+tokio = { version = "1.41", features = ["full"] }
+wasmtime = { version = "26", features = [
+    "component-model",
+    "cranelift",
+    "std",
+    "runtime",
+] }
+wasmtime-wasi = "26"
