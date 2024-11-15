@@ -1,4 +1,4 @@
-use wit_deps::lock_sync;
+// use wit_deps::lock_sync;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // lock_sync!("wit").expect("failed to lock root WIT dependencies");

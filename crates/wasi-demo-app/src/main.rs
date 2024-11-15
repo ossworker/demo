@@ -48,7 +48,7 @@ fn main() {
     let mut stdout_lock = stdout().lock();
 
     stdout_lock
-        .write_all(&output.as_bytes())
+        .write_all(output.as_bytes())
         .expect("Error when returning the response");
     stdout_lock.write_all(b"\n").expect("msg");
 
