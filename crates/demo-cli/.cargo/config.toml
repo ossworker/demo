@@ -3,8 +3,9 @@ default = 'gitea'
 
 [http]
 check-revoke = false
+
 [registries.gitea]
-index = "sparse+http://localhost:3000/api/packages/workoss/cargo/" # Sparse index
+index = "sparse+http://git.workoss.com:3000/api/packages/workoss/cargo/" # Sparse index
 
 [net]
 git-fetch-with-cli = true
