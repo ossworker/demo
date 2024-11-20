@@ -1,19 +1,18 @@
 [package]
 authors.workspace = true
+categories.workspace = true
 edition = "2021"
 license.workspace = true
-name = "http_guest"
+name = "wasm_plugin_api"
+repository.workspace = true
 version.workspace = true
 
 [lib]
-crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
 
 [dependencies]
-wit-bindgen = {version = "0.34", features = ["realloc", "macros"]}
-
-[build-dependencies]
-wit-deps = "0.4"
+anyhow.workspace = true
+wit-bindgen = "0.35"
 
 [package.metadata.component]
 target = {path = "wit"}
- 

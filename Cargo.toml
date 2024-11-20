@@ -8,19 +8,19 @@ members = [
   "crates/plugin_api",
   "crates/custom_plugin",
   "crates/plugin_host",
-  "crates/http_guest",
-  "crates/http_host",
+  "crates/wasm_plugin_api",
+  "crates/wasm_plugin",
+  "crates/wasm_plugin_host",
 ]
 resolver = "2"
 
-
 [workspace.package]
-authors = ["Workoss <workoss@icloud.com>"]
+authors = ["workoss <workoss@icloud.com>"]
+categories = ["wasm"]
 edition = "2021"
 license = "Apache-2.0"
+repository = "http://git.workoss.com:3000/workoss/demo"
 version = "0.0.1"
-categories = ["wasm"]
-repository = "https://6f73jclm-3000.asse.devtunnels.ms/workoss/demo"
 
 [workspace.dependencies]
 anyhow = {version = "1.0"}

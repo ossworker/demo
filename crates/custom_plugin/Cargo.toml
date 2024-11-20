@@ -10,9 +10,10 @@ crate-type = ["cdylib"]
 
 [package.metadata.component]
 package = "workoss:new-world"
+# target = "workoss/new-world@0.0.1"
 
 [package.metadata.component.dependencies]
 
 [dependencies]
 plugin_api = { path = "../plugin_api" }
-ureq = { version = "3.0.0-rc2" }
+# ureq = { version = "3.0.0-rc2" }

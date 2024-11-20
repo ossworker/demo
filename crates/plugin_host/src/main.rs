@@ -4,7 +4,7 @@ use wasmtime::{
     component::{bindgen, Component, Linker, ResourceTable},
     AsContextMut, Config, Engine, Result, Store,
 };
-use wasmtime_wasi::{WasiCtx, WasiCtxBuilder, WasiView};
+use wasmtime_wasi::{bindings::Command, WasiCtx, WasiCtxBuilder, WasiView};
 
 bindgen!({
     world: "new-world",
@@ -62,6 +62,21 @@ async fn main() -> Result<()> {
     // let greeting = new_world.call_greeting(&mut store, "Ben").await?;
 
     // println!("{greeting}");
+    //
+    // let command = Command::instantiate(&mut store, &component, &linker)?;
+
+    // let _ = command
+    //     .wasi_cli_run()
+    //     .call_run(&mut store)?
+    //     .map_err(|()| anyhow::anyhow!("run returned an error"))?;
+
+    // let command = Command::instantiate_async(&mut store, &component, &linker).await?;
+
+    // let _rt = command
+    //     .wasi_cli_run()
+    //     .call_run(&mut store)
+    //     .await?
+    //     .map_err(|()| anyhow::anyhow!("run returned an error"));
 
     for i in 0..100 {
         run_wasi(i, &mut store, &component, &linker).await?;

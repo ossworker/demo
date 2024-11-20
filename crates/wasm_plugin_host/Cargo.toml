@@ -1,17 +1,14 @@
 [package]
 authors.workspace = true
+categories.workspace = true
 edition = "2021"
 license.workspace = true
-name = "plugin_host"
+name = "wasm_plugin_host"
+repository.workspace = true
 version.workspace = true
 
 [dependencies]
 anyhow = {workspace = true}
 tokio = {version = "1.41", features = ["full"]}
-wasmtime = {version = "26", features = [
-  "component-model",
-  "cranelift",
-  "std",
-  "runtime",
-]}
-wasmtime-wasi = "26"
+wasmtime = {version = "26"}
+wasmtime-wasi = {version = "26"}

@@ -1,0 +1,19 @@
+package workoss:extension;
+
+world extension {
+
+    type env-vars = list<tuple<string, string>>;
+
+    record message {
+        content: string,
+        name: string,
+    }
+
+    ///get settings by key
+    import get-settings: func(key: option<string>) -> result<string, string>;
+    /// init extension
+    export init-plugin: func();
+    /// greet
+    export greet: func(msg: message) -> result<string, string>;
+
+}

@@ -1,0 +1,14 @@
+[package]
+authors.workspace = true
+categories.workspace = true
+edition = "2021"
+license.workspace = true
+name = "wasm_plugin"
+repository.workspace = true
+version.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm_plugin_api = {path = "../wasm_plugin_api"}

@@ -1,6 +1,0 @@
-package workoss:test;
-
-world proxy-etcetera {
-  include wasi:http/proxy@0.2.2;
-  include wasi:cli/imports@0.2.2;
-}
