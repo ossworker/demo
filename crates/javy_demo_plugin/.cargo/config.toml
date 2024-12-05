@@ -1,0 +1,10 @@
+[target.wasm32-wasip1]
+rustflags = [
+  "-C",
+  "target-feature=+simd128",
+  "-C",
+  "target-feature=-reference-types",
+]
+
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]

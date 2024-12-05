@@ -11,6 +11,7 @@ members = [
   "crates/wasm_plugin_api",
   "crates/wasm_plugin",
   "crates/wasm_plugin_host",
+  "crates/javy_demo_plugin",
 ]
 resolver = "2"
 

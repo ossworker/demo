@@ -1,0 +1,12 @@
+[package]
+authors.workspace = true
+categories.workspace = true
+edition = "2021"
+license.workspace = true
+name = "javy_demo_plugin"
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+javy-plugin-api = {version = "2", features = ["json"]}
