@@ -1,0 +1,28 @@
+[package]
+authors.workspace = true
+categories.workspace = true
+edition = "2024"
+license.workspace = true
+name = "axum_demo"
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+axum = {version = "0.8.0-rc.1", features = ["http2", "macros", "multipart", "ws"]}
+axum-extra = "0.10.0-rc.1"
+event-listener = {version = "5.3", features = ["loom"]}
+http-body-util = "0.1"
+log = "0.4.22"
+rhai = "1.20"
+serde = {version = "1.0", features = ["derive"]}
+serde_json = "1.0"
+thiserror = "2.0"
+toasty = {git = "https://github.com/tokio-rs/toasty"}
+toasty-sqlite = {git = "https://github.com/tokio-rs/toasty"}
+tokio = {version = "1.42", features = ["full"]}
+tower = "0.5"
+tower-http = {version = "0.6", features = ["request-id", "trace", "cors", "fs"]}
+tracing = "0.1"
+tracing-subscriber = {version = "0.3", features = ["env-filter"]}
+validator = {version = "0.19", features = ["derive"]}

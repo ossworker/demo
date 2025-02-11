@@ -1,0 +1,19 @@
+[package]
+authors = ["workoss <workoss@icloud.com>"]
+categories = ["wasm"]
+edition = "2021"
+license = "Apache-2.0"
+name = "wasi-http-demo"
+repository = "http://git.workoss.com:3000/workoss/demo"
+version = "0.0.1"
+
+[lib]
+crate-type = ["cdylib"]
+
+[package.metadata.component]
+package = "workoss:wasi-http-demo"
+proxy = true
+
+[dependencies]
+wit-bindgen-rt = {version = "0.39", features = ["bitflags"]}
+wstd = "0.5.1"
