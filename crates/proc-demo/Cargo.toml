@@ -1,0 +1,12 @@
+[package]
+authors.workspace = true
+categories.workspace = true
+edition = "2021"
+license.workspace = true
+name = "proc-demo"
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+anyhow = "1.0"
+proc = {path = "../proc"}

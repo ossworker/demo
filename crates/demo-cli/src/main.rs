@@ -1,9 +1,10 @@
 use std::path::PathBuf;
 
 use clap::{
-    builder::{styling::AnsiColor, Styles},
-    Parser, Subcommand,
+    Args, Command, CommandFactory, Parser, Subcommand, ValueHint, arg,
+    builder::{Styles, styling::AnsiColor},
 };
+use clap_complete::{Generator, Shell, generate};
 
 /// demo CLI
 #[derive(Parser, Debug)]
@@ -12,33 +13,49 @@ use clap::{
 #[command(propagate_version = true)]
 #[command(styles = CLAP_STYLING)]
 struct Cli {
-    /// Optional name 操作
-    name: Option<String>,
-
-    /// Sets a custom config file
-    #[arg(short, long, value_name = "FILE")]
-    config: Option<PathBuf>,
-
-    /// turn debugging on
-    #[arg(short, long , action = clap::ArgAction::Count)]
-    debug: u8,
-
+    // If provided, outputs the completion file for given shell
+    #[arg(long = "generate", value_enum)]
+    generator: Option<Shell>,
     #[command(subcommand)]
     command: Option<Commands>,
 }
 
 #[derive(Subcommand, Debug)]
 enum Commands {
-    /// does testing
-    #[command(arg_required_else_help = true)]
-    Test(TestCommandOpts),
+    #[command(visible_alias = "hint")]
+    ValueHint(ValueHintOpt),
 }
 
-#[derive(Parser, Debug)]
-struct TestCommandOpts {
-    /// list test value
-    #[arg(short, long)]
-    list: bool,
+#[derive(Args, Debug)]
+struct ValueHintOpt {
+    // Showcasing all possible ValueHints:
+    #[arg(long, value_hint = ValueHint::Unknown)]
+    unknown: Option<String>,
+    #[arg(long, value_hint = ValueHint::Other)]
+    other: Option<String>,
+    #[arg(short, long, value_hint = ValueHint::AnyPath)]
+    path: Option<PathBuf>,
+    #[arg(short, long, value_hint = ValueHint::FilePath)]
+    file: Option<PathBuf>,
+    #[arg(short, long, value_hint = ValueHint::DirPath)]
+    dir: Option<PathBuf>,
+    #[arg(short, long, value_hint = ValueHint::ExecutablePath)]
+    exe: Option<PathBuf>,
+    #[arg(long, value_hint = ValueHint::CommandName)]
+    cmd_name: Option<String>,
+    #[arg(short, long, value_hint = ValueHint::CommandString)]
+    cmd: Option<String>,
+    // Command::trailing_var_ar is required to use ValueHint::CommandWithArguments
+    #[arg(trailing_var_arg = true, value_hint = ValueHint::CommandWithArguments)]
+    command_with_args: Vec<String>,
+    #[arg(short, long, value_hint = ValueHint::Username)]
+    user: Option<String>,
+    #[arg(long, value_hint = ValueHint::Hostname)]
+    host: Option<String>,
+    #[arg(long, value_hint = ValueHint::Url)]
+    url: Option<String>,
+    #[arg(long, value_hint = ValueHint::EmailAddress)]
+    email: Option<String>,
 }
 
 // See also `clap_cargo::style::CLAP_STYLING`
@@ -49,30 +66,23 @@ pub const CLAP_STYLING: clap::builder::styling::Styles = Styles::styled()
     .placeholder(AnsiColor::Green.on_default())
     .error(AnsiColor::Red.on_default());
 
+fn print_completions<G: Generator>(r#gen: G, cmd: &mut Command) {
+    generate(
+        r#gen,
+        cmd,
+        cmd.get_name().to_string(),
+        &mut std::io::stdout(),
+    );
+}
+
 fn main() {
     let cli = Cli::parse();
-    // println!("{:#?}", &cli);
-    if let Some(name) = cli.name.as_deref() {
-        println!("Value for name: {name}");
-    }
 
-    if let Some(config_path) = cli.config.as_deref() {
-        println!("Value for config: {}", config_path.display());
-    }
-    match cli.debug {
-        0 => println!("Debug mode is off"),
-        1 => println!("Debug mode is kind of on"),
-        2 => println!("Debug mode is on"),
-        _ => println!("Don't be crazy"),
-    }
-    match &cli.command {
-        Some(Commands::Test(TestCommandOpts { list })) => {
-            if *list {
-                println!("Printing testing lists...");
-            } else {
-                println!("Not printing testing lists...");
-            }
-        }
-        None => {}
+    if let Some(generator) = cli.generator {
+        let mut cmd = Cli::command();
+        eprintln!("Generating completion file for {generator:?}...");
+        print_completions(generator, &mut cmd);
+    } else {
+        println!("{cli:#?}");
     }
 }

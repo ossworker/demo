@@ -18,6 +18,7 @@ default = []
 
 [dependencies]
 clap = {version = "4", features = ["derive", "wrap_help"]}
+clap_complete = "4"
 
 [build-dependencies]
 anyhow = {workspace = true}
