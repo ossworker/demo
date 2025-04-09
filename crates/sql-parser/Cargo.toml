@@ -6,4 +6,4 @@ name = "sql-parser"
 version.workspace = true
 
 [dependencies]
-sqlparser = {version = "0.51", features = ["serde", "visitor"]}
+sqlparser = {version = "0.54", features = ["serde", "visitor"]}

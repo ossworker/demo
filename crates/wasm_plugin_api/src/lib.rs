@@ -1,6 +1,10 @@
 use std::sync::{Mutex, MutexGuard};
 
+// pub trait Greeter: Send + Sync {
+// #[trait_variant::make(Send + Sync)]
+// #[async_trait::async_trait]
 pub trait Greeter: Send + Sync {
+    // pub trait Greeter {
     fn new() -> Self
     where
         Self: Sized;
@@ -12,6 +16,7 @@ wit_bindgen::generate!({
     path: "./wit",
     world: "extension",
     skip: ["init-plugin"],
+    async: false
 });
 
 struct Component;
